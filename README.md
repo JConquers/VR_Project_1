@@ -89,7 +89,7 @@ dataset
 
 For each image here we need to make a feature vector. We choose 5 features: color features, HoG, Edge features, texture featuresand ORB fetaures. 
 
-**Since feature vector coresponding to images may be of diffrent lentgh, we resize all image and fix the length of individual sub-feature vectors, so that `np.hstack() `can work without interrupts when all individual sub-feature vectors ar combined into one vector for an image**. Data used is `dataset`. We train an XGBoost model as well as a neural network and as observed, the test accuracy of XGBoost is better. This is attributed to the fact that neural networks need a lot of data to learn and here we have 4095 images.
+***Since feature vector coresponding to images may be of diffrent lentgh, we resize all image and fix the length of individual sub-feature vectors, so that `np.hstack() `can work without interrupts when all individual sub-feature vectors ar combined into one vector for an image***. Data used is `dataset`. We train an XGBoost model as well as a neural network and as observed, the test accuracy of XGBoost is better. This is attributed to the fact that neural networks need a lot of data to learn and here we have 4095 images.
 
 ### Part b
 
@@ -115,7 +115,7 @@ We find that K-means captures all pixels as part of mask that have more or less 
 [Results from K-means and ground truth mask for `MSFD/1/000003.jpg`]
 
 
-We find that Region-growing technique is sensitive to tolerance(the threshold difference for pixels be considered connected to seed). In cases where the tone of skin is comparable to that of face-mask, the tolerance needs to be drastically low to capture correct pixels.
+We find that Region-growing technique is ***sensitive to tolerance***(the threshold difference for pixels be considered connected to seed). In cases where the tone of skin is comparable to that of face-mask, the tolerance needs to be drastically low to capture correct pixels.
 
 <p align="center">
   <img src="images/58_1_rg.png" width="65%" />
@@ -142,6 +142,7 @@ In conclusion:
 |--------|------------|
 | Slower| Relatively faster|
 | Highly likely to give false-positives (cases where mask tone matches hair, spectacle,etc)| Less likely to give false positives|
+| Sensitive to number of iterations| Sensitive to tolerance|
 
 Both the algorihtms rely on predefined parameters, they do not 'learn' and hence fail to generalise over large dataset (poor mean IoU and Dice scores). Computing mean IoU and Dice for K-means over 8500+ images is computationally expensive, moreover it is evident from its performance over random samples that its scores won't be significantly better region-growing.
 
