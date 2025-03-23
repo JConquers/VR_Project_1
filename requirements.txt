@@ -5,3 +5,9 @@ scikit-learn
 xgboost
 tensorflow
 matplotlib
+os
+tensorflow
+sklearn
+PIL
+cv2
+random
