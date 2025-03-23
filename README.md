@@ -227,8 +227,8 @@ As we can see the unet model works much better than traditional methods
 ### Setup
 1. Clone the repository:
    ```bash
-   git clone <repo_link>
-   cd <repo_folder>
+   git clone https://github.com/JConquers/VR_Project_1
+   cd VR_PROJECT_1
    ```
 2. Install dependencies:
     
