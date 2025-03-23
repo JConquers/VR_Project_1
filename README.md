@@ -147,11 +147,81 @@ In conclusion:
 Both the algorihtms rely on predefined parameters, they do not 'learn' and hence fail to generalise over large dataset (poor mean IoU and Dice scores). Computing mean IoU and Dice for K-means over 8500+ images is computationally expensive, moreover it is evident from its performance over random samples that its scores won't be significantly better region-growing.
 
 
-### Part d
 
-[TO BE ADDED BY DAKSH AND ADITYA]
 
 ---
+
+
+### PART D
+
+# Project Report: Image Segmentation using Traditional and Deep Learning Methods
+
+## i. Introduction
+This project focuses on implementing image segmentation techniques using both traditional region-based methods and deep learning models such as CNN and U-Net. The objective is to segment facial regions accurately and compare the effectiveness of different methodologies.
+
+## ii. Dataset
+- **Source**: The dataset used consists of cropped facial images with corresponding ground truth masks.
+- **Structure**:
+  - `face_crop/`: Contains input images.
+  - `face_crop_segmented/`: Contains ground truth segmentation masks.
+  - `output/`: Stores results from segmentation techniques.
+
+## iii. Methodology
+### **Traditional Segmentation (Part C)**
+- **Thresholding and Morphological Operations**: Basic segmentation based on pixel intensity.
+- **Region-Based Segmentation**: Methods such as flooding and binary closing were applied.
+- **K-Means Clustering**: Used to segment regions based on color similarity.
+
+### **Deep Learning Models (Part D)**
+- **CNN-based Segmentation**: Trained on facial images to predict masks.
+- **U-Net Architecture**: A powerful fully convolutional network trained for pixel-wise classification.
+
+## iv. Hyperparameters and Experiments
+- **CNN Model**:
+  - Optimizer: Adam
+  - Learning Rate: 0.001
+  - Batch Size: 32
+  - Number of Epochs: 50
+  - Loss Function: Categorical Crossentropy
+
+- **U-Net Model**:
+  - Optimizer: Adam
+  - Learning Rate: 0.0001
+  - Batch Size: 16
+  - Number of Epochs: 100
+  - Loss Function: Dice Loss
+
+Different variations of learning rates, optimizers, and batch sizes were tested to fine-tune the models.
+
+## v. Results
+- **Evaluation Metrics**:
+  - Accuracy
+  - Intersection over Union (IoU)
+  - Dice Similarity Score
+
+  <p align="center">
+  <img src="images/unetpics.png" width="45%" />
+  
+</p>
+
+
+| Model | Accuracy | IoU | Dice Score |
+|--------|------------|------|------------|
+| U-Net | 0.9664 | 0.9137 | 0.9509 |
+
+As we can see the unet model works much better than traditional methods
+
+<p align="center">
+  <img src="images/unetresults" width="45%" />
+  
+</p>
+
+
+## vi. Observations and Analysis
+- **Traditional methods** work well for simple segmentation tasks but struggle with complex images.
+- **CNN-based models** improve segmentation but may require extensive data augmentation.
+- **U-Net** outperforms other approaches, providing the highest accuracy and IoU.
+- Challenges include dealing with varying lighting conditions and occlusions, which were addressed using preprocessing techniques and data augmentation.
 
 ## 7. How to Run the Code
 ### Setup
@@ -188,4 +258,6 @@ Both the algorihtms rely on predefined parameters, they do not 'learn' and hence
 This project demonstrates the effectiveness of deep learning techniques for face mask detection and segmentation. CNN models outperform traditional classifiers for binary classification, while U-Net provides more precise segmentation results. Further improvements can be achieved by using more complex architectures and larger datasets.
 
 ---
+
+--------------------------------------------------------------------------------------------------------
 
