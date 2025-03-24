@@ -63,7 +63,52 @@ dataset
 ---
 
 ## 4. Hyperparameters and Experiments
- [TO BE ADDED BY DAKSH AND ADITYA]
+
+
+### Hyperparameters Used in Part B
+
+#### **Model Architecture Hyperparameters**  
+| Hyperparameter         | Value              | Description |
+|------------------------|-------------------|-------------|
+| **Input Image Size**   | (128, 128, 3)     | Each image is resized to **128×128** with **3 channels (RGB)**. |
+| **Number of Conv Layers** | 3 | Extracts hierarchical features. |
+| **Filter Sizes**       | (3,3) | Kernel size used in Conv layers. |
+| **Number of Filters per Layer** | 32 → 64 → 128 | Increasing filters to capture more complex features. |
+| **Pooling Layer**      | MaxPooling2D (2×2) | Reduces spatial dimensions. |
+| **Activation Function** | ReLU | Introduces non-linearity. |
+| **Fully Connected Layer** | Dense(128, activation='relu') | Fully connected hidden layer. |
+| **Dropout Rate**       | 0.5 | Prevents overfitting. |
+| **Output Layer**       | Dense(1, activation='sigmoid') | Binary classification (mask/no-mask). |
+
+---
+
+#### **Training Hyperparameters**  
+| Hyperparameter  | Value | Description |
+|----------------|-------|-------------|
+| **Optimizer**  | Adam  | Adaptive learning optimization. |
+| **Loss Function** | Binary Crossentropy | Suitable for binary classification. |
+| **Metrics**    | Accuracy | Evaluates performance. |
+| **Epochs**     | 15 (tested 10/15/20) | Number of times model sees the dataset. |
+| **Batch Size** | 64 (tested 32/64/96/128) | Number of images per batch. |
+| **Weight Initialization** | Pre-saved Weights | Ensures consistent training across runs. |
+
+---
+
+#### **Data Augmentation & Preprocessing**  
+| Hyperparameter  | Value | Description |
+|----------------|--------|-------------|
+| **Rescaling**  | 1/255  | Normalizes pixel values between 0 and 1. |
+| **Augmentation** | None (Default) | The model performed best without augmentation. |
+| **Alternative Augmentation Options** | Rotation (20°), Shift (0.2), Zoom (0.2), Shear (0.2), Flip | Commented out but available for use. |
+
+---
+
+#### **Dataset Splitting Hyperparameters**  
+| Hyperparameter  | Value  | Description |
+|----------------|--------|-------------|
+| **Train Ratio** | 80% | Data used for training. |
+| **Validation Ratio** | 10% | Used for tuning hyperparameters. |
+| **Test Ratio** | 10% | Used for final model evaluation. |
 
 ---
 
@@ -76,7 +121,7 @@ dataset
 |--------|------------|----|-----------|
 | XGBoost (part a) | 94.15% (80-20 train-test split) | - | - |
 | Neural Network (part a)| 91.25% (80-20 train-test split) | - | - |
-| CNN | [TO BE ADDED BY DAKSH AND ADITYA] |
+| CNN (part b) | 96.33% (80-10-10 train-validation-test split)| - | - |
 | Region-growing (part c) | - | 0.3559 (mean) | 0.4798 (mean) |
 | K-mean clustering  (part c) | Explained in section 6|
 | U-Net Segmentation | [TO BE ADDED BY DAKSH AND ADITYA] |
@@ -85,17 +130,95 @@ dataset
 
 ## 6. Observations and Analysis
 
-### Part a
+### PART A
 
 For each image here we need to make a feature vector. We choose 5 features: color features, HoG, Edge features, texture featuresand ORB fetaures. 
 
 ***Since feature vector coresponding to images may be of diffrent lentgh, we resize all image and fix the length of individual sub-feature vectors, so that `np.hstack() `can work without interrupts when all individual sub-feature vectors ar combined into one vector for an image***. Data used is `dataset`. We train an XGBoost model as well as a neural network and as observed, the test accuracy of XGBoost is better. This is attributed to the fact that neural networks need a lot of data to learn and here we have 4095 images.
 
-### Part b
+### PART B
 
-[TO BE ADDED BY DAKSH AND ADITYA]
 
-### Part c
+### Project Overview
+This project implements a **binary classification** task using a **Convolutional Neural Network (CNN)** to detect whether a person is wearing a face mask or not. The dataset is split into training, validation, and testing sets. Various **hyperparameters** such as batch size, learning rate, optimizer, and activation functions were experimented with to achieve the best performance. The CNN model's performance is then compared with traditional **Machine Learning (ML) classifiers**.
+
+---
+
+### Dataset Preparation
+#### 1. Dataset Splitting
+- The original dataset consists of two classes: `with_mask` and `without_mask`. A new dataset dataset_split is created consisting of the subdirectories train,test and val. These 3 further have 2 subdirectories 0 and 1.
+- Images are split into **80% training, 10% validation, and 10% testing**.
+- A script ensures images are valid and copied to their respective directories.
+
+#### 2. Dataset Structure
+```
+dataset_split/
+├── train/
+│   ├── 0/  # Masked Images
+│   ├── 1/  # Unmasked Images
+├── val/
+│   ├── 0/  # Masked Images for Validation
+│   ├── 1/  # Unmasked Images for Validation
+├── test/
+│   ├── 0/  # Masked Images for Testing
+│   ├── 1/  # Unmasked Images for Testing
+```
+
+---
+
+### Model Architecture
+A **CNN model** is designed with the following layers:
+1. **Convolutional Layers**: Extract spatial features using **ReLU activation**.
+2. **MaxPooling Layers**: Reduce spatial dimensions to prevent overfitting.
+3. **Flatten Layer**: Converts feature maps into a single vector.
+4. **Fully Connected (Dense) Layer**: Learns classification features.
+5. **Dropout Layer (0.5)**: Reduces overfitting.
+6. **Output Layer (Sigmoid Activation)**: Outputs a probability score for binary classification.
+
+---
+
+### Training and Hyperparameter Tuning
+- **Batch Size:** 32/64/96/128 (Best: **64**)
+- **Epochs:** 10/15/20 (Best: **15**)
+- **Optimizer:** Adam
+- **Loss Function:** Binary Cross-Entropy
+- **Activation Function (Final Layer):** Sigmoid (compared with Softmax, Sigmoid performed better)
+- **Data Augmentation:** Experimented but found that training without augmentation gave better results.
+
+### Training Process
+- **Initial Weights Saved & Loaded:** Ensuring consistent training across different runs.
+- **Validation Set Used:** To monitor generalization.
+- **Training Accuracy & Loss Plotted.**
+
+---
+
+### Results & Performance
+- **Test Accuracy:** **96.33%**
+- **Train Accuracy:** ~95.63%
+- **Final Model Saved As:** `face_mask_cnn1.keras`
+
+### Model Performance Graphs
+The output graphs show:
+- **Model Accuracy:** Training accuracy vs. validation accuracy
+- **Model Loss:** Training loss vs. validation loss
+
+---
+
+### Evaluation
+- **The CNN model significantly outperformed ML classifiers.**
+- **Test accuracy (96.33%)** indicates strong generalization.
+- **Further improvements:** More hyperparameter tuning, deeper architectures, and additional data preprocessing.
+
+---
+
+---
+
+## Conclusion
+This project demonstrates the effectiveness of **CNNs for binary classification** in a face mask detection scenario. By tuning hyperparameters and optimizing model architecture, we achieved a high accuracy of **96.33%**, outperforming traditional ML classifiers.
+
+
+
+### PART C
 
 2 techniques used: K-means clustering based segmentation and Region-growing.
 
@@ -260,4 +383,3 @@ This project demonstrates the effectiveness of deep learning techniques for face
 ---
 
 --------------------------------------------------------------------------------------------------------
-
