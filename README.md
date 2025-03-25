@@ -352,6 +352,10 @@ Hyper parameters, and results shown above
 - **U-Net** outperforms other approaches, providing the highest accuracy and IoU.
 - Challenges include dealing with varying lighting conditions and occlusions, which were addressed using preprocessing techniques and data augmentation.
 
+  
+## 8. Conclusion
+This part of the project demonstrates the effectiveness of deep learning techniques for face mask detection and segmentation. CNN models outperform traditional classifiers for binary classification, while U-Net provides more precise segmentation results. Further improvements can be achieved by using more complex architectures and larger datasets.
+
 ## 5. How to Run the Code
 ### Setup
 1. Clone the repository:
@@ -383,8 +387,6 @@ Hyper parameters, and results shown above
 
 ---
 
-## 8. Conclusion
-This project demonstrates the effectiveness of deep learning techniques for face mask detection and segmentation. CNN models outperform traditional classifiers for binary classification, while U-Net provides more precise segmentation results. Further improvements can be achieved by using more complex architectures and larger datasets.
 
 ---
 
