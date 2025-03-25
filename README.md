@@ -314,7 +314,48 @@ This project focuses on implementing image segmentation techniques using both tr
   - Number of Epochs: 20
   - Loss Function: Dice Loss
 
-Different variations of learning rates, optimizers, and batch sizes were tested to fine-tune the models.
+    In this project, we experimented with different hyperparameters to optimize the performance of CNN and U-Net models for image segmentation. Below are the key hyperparameters used:
+
+    1. Learning Rate
+    Value Used: 2e-4
+    
+    Optimizer: Adam (torch.optim.Adam)
+    
+    Reasoning: A small learning rate ensures stable convergence and prevents overshooting the optimal weights.
+    
+    2. Batch Size
+    Value Used: Defined as BATCH_SIZE (used in DataLoaders)
+    
+    Impact: Controls the number of samples processed before updating model weights, affecting training stability and speed.
+    
+    3. Number of Epochs
+    Value Used: 30
+    
+    Training Strategy: The model is trained over 30 iterations to allow convergence without overfitting.
+    
+    4. Optimizer
+    Type: Adam (torch.optim.Adam)
+    
+    Reasoning: Adam is widely used for deep learning tasks due to its adaptive learning rate properties.
+    
+    5. Loss Function
+    Finding: The loss function was not explicitly found in the extracted code.
+    
+    Potential Options: Could be CrossEntropyLoss or Dice Loss for segmentation.
+    
+    
+    6. Activation Functions
+    Finding: ReLU (torch.nn.ReLU) is likely used in CNN layers.
+    
+   
+    
+    Experiments and Variations
+    The learning rate, batch size, and number of epochs can be adjusted for further fine-tuning.
+    
+    Future experiments could explore different loss functions and data augmentation strategies to improve segmentation performance.
+    
+    
+    Different variations of learning rates, optimizers, and batch sizes were tested to fine-tune the models.
 
 ## v. Results
 - **Evaluation Metrics**:
