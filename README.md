@@ -243,7 +243,7 @@ A **CNN model** is designed with the following layers:
 - **Data Augmentation:** Experimented but found that training without augmentation gave better results.
 
 ### Training Process
-- **Initial Weights Saved & Loaded:** Ensuring consistent training across different runs.
+- **Initial Weights Saved & Loaded:** Ensuring consistent training across different runs.This was an important step because without having fixed initial weights and a seed ,the accuracy differed for the same hyperparameters.
 - **Validation Set Used:** To monitor generalization.
 - **Training Accuracy & Loss Plotted.**
 
@@ -262,7 +262,7 @@ The output graphs show:
 ---
 
 ### Evaluation
-- **The CNN model significantly outperformed ML classifiers.**
+- **The CNN model significantly outperformed ML classifiers(by approximately 5 %) .**
 - **Test accuracy (96.33%)** indicates strong generalization.
 - **Further improvements:** More hyperparameter tuning, deeper architectures, and additional data preprocessing.
 
@@ -271,7 +271,7 @@ The output graphs show:
 ---
 
 ## Conclusion
-This project demonstrates the effectiveness of **CNNs for binary classification** in a face mask detection scenario. By tuning hyperparameters and optimizing model architecture, we achieved a high accuracy of **96.33%**, outperforming traditional ML classifiers.
+This part of the project demonstrates the effectiveness of **CNNs for binary classification** in a face mask detection scenario. By tuning hyperparameters and optimizing model architecture, we achieved a high accuracy of **96.33%**, outperforming traditional ML classifiers.
 
 
 
