@@ -277,18 +277,7 @@ Both the algorihtms rely on predefined parameters, they do not 'learn' and hence
 
 ### PART D
 
-
-## i. Introduction
-This project focuses on implementing image segmentation techniques using both traditional region-based methods and deep learning models such as CNN and U-Net. The objective is to segment facial regions accurately and compare the effectiveness of different methodologies.
-
-## ii. Dataset
-- **Source**: The dataset used consists of cropped facial images with corresponding ground truth masks.
-- **Structure**:
-  - `face_crop/`: Contains input images.
-  - `face_crop_segmented/`: Contains ground truth segmentation masks.
-  - `output/`: Stores results from segmentation techniques.
-
-## iii. Methodology
+## 1. Methodology
 ### **Traditional Segmentation (Part C)**
 - **Thresholding and Morphological Operations**: Basic segmentation based on pixel intensity.
 - **Region-Based Segmentation**: Methods such as flooding and binary closing were applied.
@@ -298,7 +287,7 @@ This project focuses on implementing image segmentation techniques using both tr
 - **CNN-based Segmentation**: Trained on facial images to predict masks.
 - **U-Net Architecture**: A powerful fully convolutional network trained for pixel-wise classification.
 
-## iv. Hyperparameters and Experiments
+## 2. Hyperparameters and Experiments
 - **CNN Model**:
   - Optimizer: Adam
   - Learning Rate: 0.001
@@ -313,7 +302,7 @@ This project focuses on implementing image segmentation techniques using both tr
   - Number of Epochs: 20
   - Loss Function: Dice Loss
 
-    In this project, we experimented with different hyperparameters to optimize the performance of CNN and U-Net models for image segmentation. Below are the key hyperparameters used:
+    we experimented with different hyperparameters to optimize the performance of CNN and U-Net models for image segmentation. We ran with different loss functions (DICE, Binary cross), learning rates, epochs, batch sizes. The loss stopped reducing after aroung 18-20 epochs. The results below are from the best combination of hyperparameters.
 
     1. Learning Rate
     Value Used: 0.0001
@@ -356,7 +345,7 @@ This project focuses on implementing image segmentation techniques using both tr
     
     Different variations of learning rates, optimizers, and batch sizes were tested to fine-tune the models.
 
-## v. Results
+## 3. Results
 - **Evaluation Metrics**:
   - Accuracy
   - Intersection over Union (IoU)
@@ -380,13 +369,13 @@ As we can see the unet model works much better than traditional methods
 </p>
 
 
-## vi. Observations and Analysis
+## 4. Observations and Analysis
 - **Traditional methods** work well for simple segmentation tasks but struggle with complex images.
 - **CNN-based models** improve segmentation but may require extensive data augmentation.
 - **U-Net** outperforms other approaches, providing the highest accuracy and IoU.
 - Challenges include dealing with varying lighting conditions and occlusions, which were addressed using preprocessing techniques and data augmentation.
 
-## 7. How to Run the Code
+## 5. How to Run the Code
 ### Setup
 1. Clone the repository:
    ```bash
