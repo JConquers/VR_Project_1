@@ -124,7 +124,7 @@ dataset
 | CNN (part b) | 96.33% (80-10-10 train-validation-test split)| - | - |
 | Region-growing (part c) | - | 0.3559 (mean) | 0.4798 (mean) |
 | K-mean clustering  (part c) | Explained in section 6|
-| U-Net Segmentation | [TO BE ADDED BY DAKSH AND ADITYA] |
+| U-Net Segmentation | 96.64% |91.37% | 95.09% |
 
 ---
 
