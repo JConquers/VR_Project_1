@@ -264,7 +264,8 @@ The output graphs show:
 ### Evaluation
 - **The CNN model significantly outperformed ML classifiers(by approximately 5 %) .**
 - **Test accuracy (96.33%)** indicates strong generalization.
-- **Further improvements:** More hyperparameter tuning, deeper architectures, and additional data preprocessing.
+- **Testing on external images** The model gave a high accuracy for the images in the test dataset. However, when we checked the model on images where there was a full body view of the person and not just the face, there were inaccuracies.
+- **Further improvements:** More hyperparameter tuning and deeper architectures. We can also try to further train the models on images where there is a full body view of the person and not just the face.
 
 ---
 
