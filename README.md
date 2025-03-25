@@ -304,14 +304,14 @@ This project focuses on implementing image segmentation techniques using both tr
   - Optimizer: Adam
   - Learning Rate: 0.001
   - Batch Size: 32
-  - Number of Epochs: 50
+  - Number of Epochs: 30
   - Loss Function: Categorical Crossentropy
 
 - **U-Net Model**:
   - Optimizer: Adam
   - Learning Rate: 0.0001
   - Batch Size: 16
-  - Number of Epochs: 100
+  - Number of Epochs: 20
   - Loss Function: Dice Loss
 
 Different variations of learning rates, optimizers, and batch sizes were tested to fine-tune the models.
