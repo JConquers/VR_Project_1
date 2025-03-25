@@ -110,6 +110,36 @@ dataset
 | **Validation Ratio** | 10% | Used for tuning hyperparameters. |
 | **Test Ratio** | 10% | Used for final model evaluation. |
 
+### Part D
+
+| Hyperparameter  | Description |
+|----------------|--------|-------------|
+| **Optimizer**  | Adam |
+| **Learning Rate:** | Learning Rate: 0.001 |
+| **Batch Size** | 20 |
+| **Loss function** | DICE |
+
+we experimented with different hyperparameters to optimize the performance of CNN and U-Net models for image segmentation. We ran with different loss functions (DICE, Binary cross), learning rates, epochs, batch sizes. The loss stopped reducing after aroung 18-20 epochs. The results below are from the best combination of hyperparameters.
+
+    1. Learning Rate
+    Value Used: 0.0001
+    Optimizer: Adam (torch.optim.Adam)
+    Reasoning: A small learning rate ensures stable convergence and prevents overshooting the optimal weights.
+    2. Batch Size
+    Value Used: Defined as BATCH_SIZE (used in DataLoaders)
+    Impact: Controls the number of samples processed before updating model weights, affecting training stability and speed.
+    3. Number of Epochs
+    Value Used: 30
+    Training Strategy: The model is trained over 30 iterations to allow convergence without overfitting.
+    4. Optimizer
+    Type: Adam (torch.optim.Adam)
+    Reasoning: Adam is widely used for deep learning tasks due to its adaptive learning rate properties.
+    5. Loss Function
+    Finding: The loss function was not explicitly found in the extracted code.
+    Potential Options: Could be CrossEntropyLoss or Dice Loss for segmentation.
+    6. Activation Functions
+    Finding: ReLU (torch.nn.ReLU) is likely used in CNN layers.
+
 ---
 
 ## 5. Results
@@ -126,9 +156,36 @@ dataset
 | K-mean clustering  (part c) | Explained in section 6|
 | U-Net Segmentation | 96.64% |91.37% | 95.09% |
 
+### PART D results
+
+
+- **Evaluation Metrics**:
+  - Accuracy
+  - Intersection over Union (IoU)
+  - Dice Similarity Score
+
+  <p align="center">
+  <img src="images/unetpics.png" width="45%" />
+  
+</p>
+
+
+| Model | Accuracy | IoU | Dice Score |
+|--------|------------|------|------------|
+| U-Net | 0.9664 | 0.9137 | 0.9509 |
+
+As we can see the unet model works much better than traditional methods
+
+<p align="center">
+  <img src="images/unetresults" width="45%" />
+  
+</p>
+
+
 ---
 
 ## 6. Observations and Analysis
+
 
 ### PART A
 
@@ -287,87 +344,7 @@ Both the algorihtms rely on predefined parameters, they do not 'learn' and hence
 - **CNN-based Segmentation**: Trained on facial images to predict masks.
 - **U-Net Architecture**: A powerful fully convolutional network trained for pixel-wise classification.
 
-## 2. Hyperparameters and Experiments
-- **CNN Model**:
-  - Optimizer: Adam
-  - Learning Rate: 0.001
-  - Batch Size: 32
-  - Number of Epochs: 30
-  - Loss Function: Categorical Crossentropy
-
-- **U-Net Model**:
-  - Optimizer: Adam
-  - Learning Rate: 0.0001
-  - Batch Size: 16
-  - Number of Epochs: 20
-  - Loss Function: Dice Loss
-
-    we experimented with different hyperparameters to optimize the performance of CNN and U-Net models for image segmentation. We ran with different loss functions (DICE, Binary cross), learning rates, epochs, batch sizes. The loss stopped reducing after aroung 18-20 epochs. The results below are from the best combination of hyperparameters.
-
-    1. Learning Rate
-    Value Used: 0.0001
-    
-    Optimizer: Adam (torch.optim.Adam)
-    
-    Reasoning: A small learning rate ensures stable convergence and prevents overshooting the optimal weights.
-    
-    2. Batch Size
-    Value Used: Defined as BATCH_SIZE (used in DataLoaders)
-    
-    Impact: Controls the number of samples processed before updating model weights, affecting training stability and speed.
-    
-    3. Number of Epochs
-    Value Used: 30
-    
-    Training Strategy: The model is trained over 30 iterations to allow convergence without overfitting.
-    
-    4. Optimizer
-    Type: Adam (torch.optim.Adam)
-    
-    Reasoning: Adam is widely used for deep learning tasks due to its adaptive learning rate properties.
-    
-    5. Loss Function
-    Finding: The loss function was not explicitly found in the extracted code.
-    
-    Potential Options: Could be CrossEntropyLoss or Dice Loss for segmentation.
-    
-    
-    6. Activation Functions
-    Finding: ReLU (torch.nn.ReLU) is likely used in CNN layers.
-    
-   
-    
-    Experiments and Variations
-    The learning rate, batch size, and number of epochs can be adjusted for further fine-tuning.
-    
-    Future experiments could explore different loss functions and data augmentation strategies to improve segmentation performance.
-    
-    
-    Different variations of learning rates, optimizers, and batch sizes were tested to fine-tune the models.
-
-## 3. Results
-- **Evaluation Metrics**:
-  - Accuracy
-  - Intersection over Union (IoU)
-  - Dice Similarity Score
-
-  <p align="center">
-  <img src="images/unetpics.png" width="45%" />
-  
-</p>
-
-
-| Model | Accuracy | IoU | Dice Score |
-|--------|------------|------|------------|
-| U-Net | 0.9664 | 0.9137 | 0.9509 |
-
-As we can see the unet model works much better than traditional methods
-
-<p align="center">
-  <img src="images/unetresults" width="45%" />
-  
-</p>
-
+Hyper parameters, and results shown above
 
 ## 4. Observations and Analysis
 - **Traditional methods** work well for simple segmentation tasks but struggle with complex images.
