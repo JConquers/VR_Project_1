@@ -65,7 +65,7 @@ dataset
 ## 4. Hyperparameters and Experiments
 
 
-### Hyperparameters Used in Part B
+###  Part B
 
 #### **Model Architecture Hyperparameters**  
 | Hyperparameter         | Value              | Description |
@@ -111,9 +111,8 @@ dataset
 | **Test Ratio** | 10% | Used for final model evaluation. |
 
 ### Part D
-
 | Hyperparameter  | Description |
-|----------------|--------|-------------|
+|----------------|--------|
 | **Optimizer**  | Adam |
 | **Learning Rate:** | Learning Rate: 0.001 |
 | **Batch Size** | 20 |
@@ -156,13 +155,7 @@ we experimented with different hyperparameters to optimize the performance of CN
 | K-mean clustering  (part c) | Explained in section 6|
 | U-Net Segmentation | 96.64% |91.37% | 95.09% |
 
-### PART D results
-
-
-- **Evaluation Metrics**:
-  - Accuracy
-  - Intersection over Union (IoU)
-  - Dice Similarity Score
+##### (Image below corresponds to part d result)
 
   <p align="center">
   <img src="images/unetpics.png" width="45%" />
@@ -170,11 +163,9 @@ we experimented with different hyperparameters to optimize the performance of CN
 </p>
 
 
-| Model | Accuracy | IoU | Dice Score |
-|--------|------------|------|------------|
-| U-Net | 0.9664 | 0.9137 | 0.9509 |
 
-As we can see the unet model works much better than traditional methods
+
+As we can see the unet model works much better than traditional methods of part c. Similarly CNN of part b better than part a methods.
 
 <p align="center">
   <img src="images/unetresults" width="45%" />
@@ -193,13 +184,12 @@ For each image here we need to make a feature vector. We choose 5 features: colo
 
 ***Since feature vector coresponding to images may be of diffrent lentgh, we resize all image and fix the length of individual sub-feature vectors, so that `np.hstack() `can work without interrupts when all individual sub-feature vectors ar combined into one vector for an image***. Data used is `dataset`. We train an XGBoost model as well as a neural network and as observed, the test accuracy of XGBoost is better. This is attributed to the fact that neural networks need a lot of data to learn and here we have 4095 images.
 
+----
 ### PART B
 
 
-### Project Overview
-This project implements a **binary classification** task using a **Convolutional Neural Network (CNN)** to detect whether a person is wearing a face mask or not. The dataset is split into training, validation, and testing sets. Various **hyperparameters** such as batch size, learning rate, optimizer, and activation functions were experimented with to achieve the best performance. The CNN model's performance is then compared with traditional **Machine Learning (ML) classifiers**.
+<!--This implements a **binary classification** task using a **Convolutional Neural Network (CNN)** to detect whether a person is wearing a face mask or not. The dataset is split into training, validation, and testing sets. Various **hyperparameters** such as batch size, learning rate, optimizer, and activation functions were experimented with to achieve the best performance. The CNN model's performance is then compared with traditional **Machine Learning (ML) classifiers**.-->
 
----
 
 ### Dataset Preparation
 #### 1. Dataset Splitting
@@ -221,7 +211,7 @@ dataset_split/
 │   ├── 1/  # Unmasked Images for Testing
 ```
 
----
+
 
 ### Model Architecture
 A **CNN model** is designed with the following layers:
@@ -232,7 +222,6 @@ A **CNN model** is designed with the following layers:
 5. **Dropout Layer (0.5)**: Reduces overfitting.
 6. **Output Layer (Sigmoid Activation)**: Outputs a probability score for binary classification.
 
----
 
 ### Training and Hyperparameter Tuning
 - **Batch Size:** 32/64/96/128 (Best: **64**)
@@ -247,7 +236,7 @@ A **CNN model** is designed with the following layers:
 - **Validation Set Used:** To monitor generalization.
 - **Training Accuracy & Loss Plotted.**
 
----
+
 
 ### Results & Performance
 - **Test Accuracy:** **96.33%**
@@ -259,7 +248,6 @@ The output graphs show:
 - **Model Accuracy:** Training accuracy vs. validation accuracy
 - **Model Loss:** Training loss vs. validation loss
 
----
 
 ### Evaluation
 - **The CNN model significantly outperformed ML classifiers(by approximately 5 %) .**
@@ -268,12 +256,6 @@ The output graphs show:
 - **Further improvements:** More hyperparameter tuning and deeper architectures. We can also try to further train the models on images where there is a full body view of the person and not just the face.
 
 ---
-
----
-
-## Conclusion
-This part of the project demonstrates the effectiveness of **CNNs for binary classification** in a face mask detection scenario. By tuning hyperparameters and optimizing model architecture, we achieved a high accuracy of **96.33%**, outperforming traditional ML classifiers.
-
 
 
 ### PART C
@@ -335,27 +317,19 @@ Both the algorihtms rely on predefined parameters, they do not 'learn' and hence
 
 ### PART D
 
-## 1. Methodology
-### **Traditional Segmentation (Part C)**
-- **Thresholding and Morphological Operations**: Basic segmentation based on pixel intensity.
-- **Region-Based Segmentation**: Methods such as flooding and binary closing were applied.
-- **K-Means Clustering**: Used to segment regions based on color similarity.
+### Methodology
 
-### **Deep Learning Models (Part D)**
 - **CNN-based Segmentation**: Trained on facial images to predict masks.
 - **U-Net Architecture**: A powerful fully convolutional network trained for pixel-wise classification.
 
-Hyper parameters, and results shown above
+Hyper parameters, and results shown above (section 5)
 
-## 4. Observations and Analysis
+#### Observations and Analysis
 - **Traditional methods** work well for simple segmentation tasks but struggle with complex images.
 - **CNN-based models** improve segmentation but may require extensive data augmentation.
 - **U-Net** outperforms other approaches, providing the highest accuracy and IoU.
 - Challenges include dealing with varying lighting conditions and occlusions, which were addressed using preprocessing techniques and data augmentation.
 
-  
-## 8. Conclusion
-This part of the project demonstrates the effectiveness of deep learning techniques for face mask detection and segmentation. CNN models outperform traditional classifiers for binary classification, while U-Net provides more precise segmentation results. Further improvements can be achieved by using more complex architectures and larger datasets.
 
 ## 5. How to Run the Code
 ### Setup
