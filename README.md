@@ -317,7 +317,7 @@ This project focuses on implementing image segmentation techniques using both tr
     In this project, we experimented with different hyperparameters to optimize the performance of CNN and U-Net models for image segmentation. Below are the key hyperparameters used:
 
     1. Learning Rate
-    Value Used: 2e-4
+    Value Used: 0.0001
     
     Optimizer: Adam (torch.optim.Adam)
     
