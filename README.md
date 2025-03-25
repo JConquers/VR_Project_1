@@ -277,7 +277,6 @@ Both the algorihtms rely on predefined parameters, they do not 'learn' and hence
 
 ### PART D
 
-# Project Report: Image Segmentation using Traditional and Deep Learning Methods
 
 ## i. Introduction
 This project focuses on implementing image segmentation techniques using both traditional region-based methods and deep learning models such as CNN and U-Net. The objective is to segment facial regions accurately and compare the effectiveness of different methodologies.
